@@ -1,0 +1,14 @@
+{
+    "culture": "zh-Hans",
+  "texts": {
+    "Menu:Home": "首页",
+    "Welcome": "欢迎",
+    "LongWelcomeMessage": "欢迎来到该应用程序. 这是一个基于ABP框架的启动项目. 有关更多信息, 请访问 abp.io.",
+    "BookDeletionConfirmationMessage": "你确定要删除这个书本吗'{0}'?",
+    "SuccessfullyDeleted": "删除成功!",
+    "Name": "名称",
+    "Type": "类型",
+    "PublishDate": "发布时间",
+    "Price": "价格"
+  }
+  }
