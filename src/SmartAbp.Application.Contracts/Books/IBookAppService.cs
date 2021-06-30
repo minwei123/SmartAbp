@@ -7,7 +7,7 @@ using Volo.Abp.Application.Services;
 namespace SmartAbp.Books
 {
     public interface IBookAppService :
-        ICrudAppService< //Defines CRUD methods
+            ICrudAppService< //Defines CRUD methods
             BookDto, //Used to show books
             Guid, //Primary key of the book entity
             PagedAndSortedResultRequestDto, //Used for paging/sorting

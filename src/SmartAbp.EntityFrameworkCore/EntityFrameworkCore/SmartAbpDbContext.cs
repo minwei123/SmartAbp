@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmartAbp.Books;
+using SmartAbp.Stations;
 using SmartAbp.Users;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
@@ -25,6 +26,8 @@ namespace SmartAbp.EntityFrameworkCore
 
         //下面是我添加的为了生成Books
         public DbSet<Book> Books { get; set; }
+        //下面是我添加的为了生成
+        public DbSet<Station> Stations { get; set; }
 
         /* Add DbSet properties for your Aggregate Roots / Entities here.
          * Also map them inside SmartAbpDbContextModelCreatingExtensions.ConfigureSmartAbp

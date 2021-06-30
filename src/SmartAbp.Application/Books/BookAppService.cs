@@ -23,5 +23,12 @@ namespace SmartAbp.Books
         {
 
         }
+        public Task<BookDto> abpGet(Guid id) {
+
+           
+            Task<BookDto> task = GetAsync(id);
+            
+            return task;
+        }
     }
 }
