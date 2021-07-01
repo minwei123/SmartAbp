@@ -47,6 +47,19 @@ namespace SmartAbp.Web.Menus
                     )
                 )
             );
+            context.Menu.AddItem(
+                new ApplicationMenuItem(
+                    "StationsStore",
+                    l["工作站"],
+                    icon: "fa fa-book"
+                ).AddItem(
+                    new ApplicationMenuItem(
+                        "SmartAbp.Stations",
+                        l["工作站列表"],
+                        url: "/Stations"
+                    )
+                )
+            );
 
             if (MultiTenancyConsts.IsEnabled)
             {

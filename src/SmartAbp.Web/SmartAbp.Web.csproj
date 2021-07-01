@@ -20,6 +20,7 @@
     <Content Remove="Logs\**" />
     <EmbeddedResource Remove="Logs\**" />
     <None Remove="Logs\**" />
+    <None Remove="Pages\Stations\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -52,4 +53,7 @@
     <PackageReference Include="Volo.Abp.SettingManagement.Web" Version="4.3.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Stations\" />
+  </ItemGroup>
 </Project>
