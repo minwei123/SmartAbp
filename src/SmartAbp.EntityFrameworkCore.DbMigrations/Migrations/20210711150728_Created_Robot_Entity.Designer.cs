@@ -11,8 +11,8 @@ using Volo.Abp.EntityFrameworkCore;
 namespace SmartAbp.Migrations
 {
     [DbContext(typeof(SmartAbpMigrationsDbContext))]
-    [Migration("20210711075704_Created_WeldSection_Entity")]
-    partial class Created_WeldSection_Entity
+    [Migration("20210711150728_Created_Robot_Entity")]
+    partial class Created_Robot_Entity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -74,6 +74,25 @@ namespace SmartAbp.Migrations
                     b.ToTable("AppBooks");
                 });
 
+            modelBuilder.Entity("SmartAbp.Stations.Robot", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("StationId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("robotType")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StationId");
+
+                    b.ToTable("AppRobots");
+                });
+
             modelBuilder.Entity("SmartAbp.Stations.Station", b =>
                 {
                     b.Property<Guid>("Id")
@@ -86,9 +105,6 @@ namespace SmartAbp.Migrations
                         .HasColumnType("nvarchar(40)")
                         .HasColumnName("ConcurrencyStamp");
 
-                    b.Property<string>("CreatedDT")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2")
                         .HasColumnName("CreationTime");
@@ -96,9 +112,6 @@ namespace SmartAbp.Migrations
                     b.Property<Guid?>("CreatorId")
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("CreatorId");
-
-                    b.Property<string>("DeletedDT")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -121,15 +134,6 @@ namespace SmartAbp.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("LastModifierId");
 
-                    b.Property<string>("LineID")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LinePK")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ModifiedDT")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(128)
@@ -140,6 +144,9 @@ namespace SmartAbp.Migrations
 
                     b.Property<string>("SkillScore")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("stationType")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -152,8 +159,14 @@ namespace SmartAbp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("RobotId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<float>("current")
                         .HasColumnType("real");
+
+                    b.Property<int>("rid")
+                        .HasColumnType("int");
 
                     b.Property<float>("speed")
                         .HasColumnType("real");
@@ -162,6 +175,8 @@ namespace SmartAbp.Migrations
                         .HasColumnType("real");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("RobotId");
 
                     b.ToTable("AppWeldSections");
                 });
@@ -2082,6 +2097,20 @@ namespace SmartAbp.Migrations
                     b.ToTable("AbpTenantConnectionStrings");
                 });
 
+            modelBuilder.Entity("SmartAbp.Stations.Robot", b =>
+                {
+                    b.HasOne("SmartAbp.Stations.Station", null)
+                        .WithMany("robots")
+                        .HasForeignKey("StationId");
+                });
+
+            modelBuilder.Entity("SmartAbp.Stations.WeldSection", b =>
+                {
+                    b.HasOne("SmartAbp.Stations.Robot", null)
+                        .WithMany("weldSections")
+                        .HasForeignKey("RobotId");
+                });
+
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLogAction", b =>
                 {
                     b.HasOne("Volo.Abp.AuditLogging.AuditLog", null)
@@ -2357,6 +2386,16 @@ namespace SmartAbp.Migrations
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("SmartAbp.Stations.Robot", b =>
+                {
+                    b.Navigation("weldSections");
+                });
+
+            modelBuilder.Entity("SmartAbp.Stations.Station", b =>
+                {
+                    b.Navigation("robots");
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>
