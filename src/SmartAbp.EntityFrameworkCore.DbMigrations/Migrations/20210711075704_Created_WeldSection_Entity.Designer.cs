@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmartAbp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
@@ -10,9 +11,10 @@ using Volo.Abp.EntityFrameworkCore;
 namespace SmartAbp.Migrations
 {
     [DbContext(typeof(SmartAbpMigrationsDbContext))]
-    partial class SmartAbpMigrationsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210711075704_Created_WeldSection_Entity")]
+    partial class Created_WeldSection_Entity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,46 +72,6 @@ namespace SmartAbp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AppBooks");
-                });
-
-            modelBuilder.Entity("SmartAbp.Stations.Robot", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)")
-                        .HasColumnName("ConcurrencyStamp");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("CreationTime");
-
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("CreatorId");
-
-                    b.Property<string>("ExtraProperties")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ExtraProperties");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("LastModificationTime");
-
-                    b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("LastModifierId");
-
-                    b.Property<string>("name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AppRobots");
                 });
 
             modelBuilder.Entity("SmartAbp.Stations.Station", b =>
@@ -190,9 +152,6 @@ namespace SmartAbp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("RobotId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<float>("current")
                         .HasColumnType("real");
 
@@ -203,8 +162,6 @@ namespace SmartAbp.Migrations
                         .HasColumnType("real");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("RobotId");
 
                     b.ToTable("AppWeldSections");
                 });
@@ -2125,13 +2082,6 @@ namespace SmartAbp.Migrations
                     b.ToTable("AbpTenantConnectionStrings");
                 });
 
-            modelBuilder.Entity("SmartAbp.Stations.WeldSection", b =>
-                {
-                    b.HasOne("SmartAbp.Stations.Robot", null)
-                        .WithMany("WeldSections")
-                        .HasForeignKey("RobotId");
-                });
-
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLogAction", b =>
                 {
                     b.HasOne("Volo.Abp.AuditLogging.AuditLog", null)
@@ -2407,11 +2357,6 @@ namespace SmartAbp.Migrations
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("SmartAbp.Stations.Robot", b =>
-                {
-                    b.Navigation("WeldSections");
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>
