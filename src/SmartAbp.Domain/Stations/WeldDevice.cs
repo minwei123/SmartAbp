@@ -1,5 +1,8 @@
 using System;
-using Volo.Abp.Domain.Entities.Auditing;
+using System.Collections.Generic;
+using Volo.Abp.Domain.Entities;
+using Volo.Abp.Domain.Values;
+
 namespace SmartAbp.Stations
 {
   public class WeldSection : ValueObject
@@ -8,10 +11,16 @@ namespace SmartAbp.Stations
     public float voltage { get; set; }
     public float current { get; set; }
     public float speed { get; set; }
-  }
+
+    protected override IEnumerable<object> GetAtomicValues()
+    {
+      throw new NotImplementedException();
+    }
+    }
   public class Robot : Entity<Guid>
   {
-    public List<WeldSection> WeldSections { get; set; }
+      public List<WeldSection> WeldSections { get; set; }
+
       protected Robot() {
 
       }
