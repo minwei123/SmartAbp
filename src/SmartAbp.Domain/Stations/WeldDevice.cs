@@ -19,11 +19,6 @@ namespace SmartAbp.Stations
             this.speed = speed;
         }
     }
-    public enum RobotType
-    {
-        WeldingRobot,
-        TransferRobot
-    }
     public class Robot : Entity<Guid>
     {
         public RobotType robotType { get; private set; }

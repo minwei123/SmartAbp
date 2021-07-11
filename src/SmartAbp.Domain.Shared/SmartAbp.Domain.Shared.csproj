@@ -28,4 +28,10 @@
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="5.0.*" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Stations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Stations\" />
+  </ItemGroup>
 </Project>
