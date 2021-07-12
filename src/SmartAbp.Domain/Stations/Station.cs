@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using Volo.Abp.Domain.Entities.Auditing;
+using Volo.Abp.Domain.Values;
+
 namespace SmartAbp.Stations
 {
     //工作站类型没有使用继承技术
@@ -12,11 +15,17 @@ namespace SmartAbp.Stations
     {
         private class ProtectedGas : ValueObject
         {
-
+            protected override IEnumerable<object> GetAtomicValues()
+            {
+                throw new NotImplementedException();
+            }
         }
         private class CompressedGas : ValueObject
         {
-            
+            protected override IEnumerable<object> GetAtomicValues()
+            {
+                throw new NotImplementedException();
+            }
         }
         private CompressedGas compressedGas { get; }
         private List<ProtectedGas> protectedGases { get; }
@@ -31,9 +40,10 @@ namespace SmartAbp.Stations
         public String IsEnabled { get; set; }
         public String IsDeleted { get; set; }
         public String SkillScore { get; set; }
-        
-        private Station()  { }
-        public Station(Guid id, StationType st) : base(id) {
+
+        private Station() { }
+        public Station(Guid id, StationType st) : base(id)
+        {
             stationType = st;
         }
         public bool powerOn()

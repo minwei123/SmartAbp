@@ -37,6 +37,22 @@ namespace SmartAbp.EntityFrameworkCore
                 b.ConfigureByConvention(); //auto configure for the base class props
                 b.Property(x => x.Name).IsRequired().HasMaxLength(128);
             });
+            //下面是创建数据库表时候用的语句
+            builder.Entity<WeldSection>(b =>
+            {
+                b.ToTable(SmartAbpConsts.DbTablePrefix + "WeldSections",
+                          SmartAbpConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+                //b.Property(x => x.Name).IsRequired().HasMaxLength(128);
+            });
+            //下面是创建数据库表时候用的语句
+            builder.Entity<Robot>(b =>
+            {
+                b.ToTable(SmartAbpConsts.DbTablePrefix + "Robots",
+                          SmartAbpConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+                //b.Property(x => x.Name).IsRequired().HasMaxLength(128);
+            });
         }
     }
 }
