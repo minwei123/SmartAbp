@@ -17,6 +17,7 @@ namespace SmartAbp.Stations
         public StationAppService(IRepository<Station, Guid> repository)
             : base(repository)
         {
+
         }
     }
 }
