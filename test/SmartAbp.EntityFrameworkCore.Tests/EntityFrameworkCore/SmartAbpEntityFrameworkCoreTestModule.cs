@@ -1,11 +1,13 @@
 ﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.Sqlite;
+using Volo.Abp.EntityFrameworkCore.SqlServer;
 using Volo.Abp.Modularity;
 
 namespace SmartAbp.EntityFrameworkCore
@@ -13,15 +15,18 @@ namespace SmartAbp.EntityFrameworkCore
     [DependsOn(
         typeof(SmartAbpEntityFrameworkCoreDbMigrationsModule),
         typeof(SmartAbpTestBaseModule),
-        typeof(AbpEntityFrameworkCoreSqliteModule)
+        typeof(AbpEntityFrameworkCoreSqliteModule),
+        typeof(AbpEntityFrameworkCoreSqlServerModule)
         )]
     public class SmartAbpEntityFrameworkCoreTestModule : AbpModule
     {
         private SqliteConnection _sqliteConnection;
+        
 
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
             ConfigureInMemorySqlite(context.Services);
+            
         }
 
         private void ConfigureInMemorySqlite(IServiceCollection services)

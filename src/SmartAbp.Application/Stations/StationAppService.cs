@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
@@ -17,6 +17,7 @@ namespace SmartAbp.Stations
         public StationAppService(IRepository<Station, Guid> repository)
             : base(repository)
         {
+
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using SmartAbp.Books;
 using SmartAbp.Stations;
 
@@ -23,6 +23,8 @@ namespace SmartAbp
             CreateMap<Robot, RobotDto>();
             //这个是为了把后台展示层传递到前台
             CreateMap<CreateUpdateRobotDto, Robot>();
+            //这个是为把数据从后台传前台展示层
+            CreateMap<WeldSection, WeldSectionDto>();
 
         }
     }
