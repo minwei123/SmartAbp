@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SmartAbp.Books;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using SmartAbp.Books;
+using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
 
@@ -28,14 +25,14 @@ namespace SmartAbp.Stations
             _repository = repository;
         }
 
-        
+
 
         //重载关联查询
         public override async Task<PagedResultDto<RobotDto>> GetListAsync(PagedAndSortedResultRequestDto input)
         {
             var robots = new List<Robot>(await _repository.WithDetailsAsync(x => x.weldSections));
             var robotcount = await _repository.GetCountAsync();
-            
+
             var robotDtos = robots.Select(x =>
             {
                 var robotDto = ObjectMapper.Map<Robot, RobotDto>(x);
@@ -43,7 +40,7 @@ namespace SmartAbp.Stations
                 return robotDto;
             }).ToList();
 
-            
+
             var totalCount = await Repository.GetCountAsync();
             return new PagedResultDto<RobotDto>(robotcount, robotDtos);
 
