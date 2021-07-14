@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmartAbp.Users;
+using SmartAbp.Stations;
 using Shouldly;
 using System;
 using System.Linq;
@@ -17,10 +18,11 @@ namespace SmartAbp.EntityFrameworkCore.Samples
     public class SampleRepositoryTests : SmartAbpEntityFrameworkCoreTestBase
     {
         private readonly IRepository<AppUser, Guid> _appUserRepository;
-
+        private readonly IRepository<Robot, Guid> _appRobotRepository;
         public SampleRepositoryTests()
         {
             _appUserRepository = GetRequiredService<IRepository<AppUser, Guid>>();
+            _appRobotRepository= GetRequiredService<IRepository<Robot, Guid>>();
         }
 
         [Fact]
@@ -40,5 +42,14 @@ namespace SmartAbp.EntityFrameworkCore.Samples
                 adminUser.ShouldNotBeNull();
             });
         }
+
+        //[Fact]
+        //public async Task<Robot> AppRobot()
+        //{
+        //    Robot robot = new Robot(new Guid(),"dhsbdsdh");
+        //    return await _appRobotRepository.InsertAsync(robot);
+        //}
+
+
     }
 }
