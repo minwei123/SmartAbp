@@ -15,6 +15,8 @@ namespace SmartAbp.Stations
     {
         private class ProtectedGas : ValueObject
         {
+            public float Capacity { get; set; }
+            public float Remainder { get; set; }
             protected override IEnumerable<object> GetAtomicValues()
             {
                 throw new NotImplementedException();
@@ -22,6 +24,8 @@ namespace SmartAbp.Stations
         }
         private class CompressedGas : ValueObject
         {
+            public float Capacity { get; set; }
+            public float Remainder { get; set; }
             protected override IEnumerable<object> GetAtomicValues()
             {
                 throw new NotImplementedException();
@@ -29,7 +33,7 @@ namespace SmartAbp.Stations
         }
         private CompressedGas compressedGas { get; }
         private List<ProtectedGas> protectedGases { get; }
-        public List<Robot> robots { get; set; }
+        public List<Robot> robots { get; set; } // 工作站里包含一个或多个机器人
         // private表示不能直接修改这个值
         // 在构造时确定类型后，就不允许变化了
         public StationType stationType { get; private set; }
@@ -48,7 +52,10 @@ namespace SmartAbp.Stations
         }
         public bool powerOn()
         {
-            // 上电，可能包含机器人的上电
+            // 上电，包含机器人的上电
+            foreach(Robot rb in robots) {
+                rb.powerOn();
+            }
             return false;
         }
         public bool start()
