@@ -32,6 +32,11 @@ namespace SmartAbp.Stations
         {
             robotType = rt;
         }
+        public void powerOn()
+        {
+            // 机器人上电开机
+            // 做一些日志记录，规则检查等等
+        }
         public void maintain()
         {
             // 对机器人的保养
@@ -44,5 +49,17 @@ namespace SmartAbp.Stations
         {
 
         }
+    }
+    public class TransportRobot : Robot 
+    {
+        public String Name { get; set; }
+       protected TransportRobot() 
+       {
+           
+       } 
+       public TransportRobot(Guid id) : base(id)
+       {
+
+       }
     }
 }
