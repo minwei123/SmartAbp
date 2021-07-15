@@ -24,9 +24,6 @@ namespace SmartAbp.Stations
         {
             _repository = repository;
         }
-
-        
-
         //重载关联查询
         public override async Task<PagedResultDto<RobotDto>> GetListAsync(PagedAndSortedResultRequestDto input)
         {
@@ -48,5 +45,20 @@ namespace SmartAbp.Stations
         }
 
 
+    }
+    public class TransportRobotAppService :
+        CrudAppService<
+            TransportRobot, //The Book entity
+            TransportRobotDto, //Used to show books
+            Guid, //Primary key of the book entity
+            PagedAndSortedResultRequestDto,
+            CreateUpdateTransportRobotDto>,
+        ITransportRobotAppService
+    {
+        public TransportRobotAppService(IRepository<TransportRobot, Guid> repository)
+           : base(repository)
+        {
+        
+        }
     }
 }

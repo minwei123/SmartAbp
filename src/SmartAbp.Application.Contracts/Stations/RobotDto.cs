@@ -10,5 +10,9 @@ namespace SmartAbp.Stations
         RobotType robotType { get; set; }
         public List<WeldSectionDto> weldSections { get; set; }
     }
+    public class TransportRobotDto: RobotDto
+    {
+        public String Name { get; set; }
+    }
 }
 

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmartAbp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
@@ -10,9 +11,10 @@ using Volo.Abp.EntityFrameworkCore;
 namespace SmartAbp.Migrations
 {
     [DbContext(typeof(SmartAbpMigrationsDbContext))]
-    partial class SmartAbpMigrationsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210715151416_Created_TransportRobot_Entity")]
+    partial class Created_TransportRobot_Entity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -149,42 +151,6 @@ namespace SmartAbp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AppStations");
-                });
-
-            modelBuilder.Entity("SmartAbp.Stations.Station+CompressedGas", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<float>("Capacity")
-                        .HasColumnType("real");
-
-                    b.Property<float>("Remainder")
-                        .HasColumnType("real");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AppCompressedGas");
-                });
-
-            modelBuilder.Entity("SmartAbp.Stations.Station+ProtectedGas", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<float>("Capacity")
-                        .HasColumnType("real");
-
-                    b.Property<float>("Remainder")
-                        .HasColumnType("real");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AppProtectedGas");
                 });
 
             modelBuilder.Entity("SmartAbp.Stations.WeldSection", b =>

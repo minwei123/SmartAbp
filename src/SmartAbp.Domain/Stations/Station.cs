@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Volo.Abp.Domain.Entities;
 using Volo.Abp.Domain.Entities.Auditing;
 using Volo.Abp.Domain.Values;
 
@@ -13,7 +14,8 @@ namespace SmartAbp.Stations
     }
     public class Station : AuditedAggregateRoot<Guid>
     {
-        private class ProtectedGas : ValueObject
+        //私有属性外部不好访问
+        public class ProtectedGas : ValueObject
         {
             public float Capacity { get; set; }
             public float Remainder { get; set; }
@@ -22,7 +24,8 @@ namespace SmartAbp.Stations
                 throw new NotImplementedException();
             }
         }
-        private class CompressedGas : ValueObject
+        //私有属性外部不好访问
+        public class CompressedGas : ValueObject
         {
             public float Capacity { get; set; }
             public float Remainder { get; set; }

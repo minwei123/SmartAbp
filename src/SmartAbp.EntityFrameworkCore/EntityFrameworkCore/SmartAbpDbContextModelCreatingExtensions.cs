@@ -53,6 +53,31 @@ namespace SmartAbp.EntityFrameworkCore
                 b.ConfigureByConvention(); //auto configure for the base class props
                 //b.Property(x => x.Name).IsRequired().HasMaxLength(128);
             });
+            //下面是创建数据库表时候用的语句
+            builder.Entity<TransportRobot>(b =>
+            {
+                b.ToTable(SmartAbpConsts.DbTablePrefix + "TransportRobots",
+                          SmartAbpConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+            });
+            builder.Entity<Station.ProtectedGas>(b =>
+            {
+                b.ToTable(SmartAbpConsts.DbTablePrefix + "ProtectedGas",
+                          SmartAbpConsts.DbSchema);
+                b.Property<int>("Id").IsRequired();  // Id is a shadow property
+
+                b.HasKey("Id");   // Id is a shadow property
+                b.ConfigureByConvention(); //auto configure for the base class props
+            });
+            builder.Entity<Station.CompressedGas>(b =>
+            {
+                b.ToTable(SmartAbpConsts.DbTablePrefix + "CompressedGas",
+                          SmartAbpConsts.DbSchema);
+                b.Property<int>("Id").IsRequired();  // Id is a shadow property
+
+                b.HasKey("Id");   // Id is a shadow property
+                b.ConfigureByConvention(); //auto configure for the base class props
+            });
         }
     }
 }

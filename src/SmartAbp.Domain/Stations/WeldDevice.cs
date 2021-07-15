@@ -57,7 +57,7 @@ namespace SmartAbp.Stations
        {
            
        } 
-       public TransportRobot(Guid id) : base(id)
+       public TransportRobot(Guid id, RobotType rt) : base(id, rt)
        {
 
        }

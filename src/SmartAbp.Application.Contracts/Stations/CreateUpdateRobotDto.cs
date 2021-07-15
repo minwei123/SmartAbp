@@ -12,4 +12,9 @@ namespace SmartAbp.Stations
         [Required]
         public List<WeldSectionDto> weldSections { get; set; }
     }
+    public class CreateUpdateTransportRobotDto : CreateUpdateRobotDto
+    {
+        [Required]
+        public String Name { get; set; }
+    }
 }

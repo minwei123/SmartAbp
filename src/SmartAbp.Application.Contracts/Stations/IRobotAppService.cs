@@ -13,4 +13,12 @@ namespace SmartAbp.Stations
             CreateUpdateRobotDto> 
     {
     }
+    public interface ITransportRobotAppService :
+           ICrudAppService<
+           TransportRobotDto,
+           Guid,
+           PagedAndSortedResultRequestDto,
+           CreateUpdateTransportRobotDto>
+    {
+    }
 }

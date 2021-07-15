@@ -32,6 +32,12 @@ namespace SmartAbp.EntityFrameworkCore
         public DbSet<WeldSection> WeldSections { get; set; }
         //下面是我添加的为了生成
         public DbSet<Robot> Robots { get; set; }
+        //下面是我添加的为了生成
+        public DbSet<TransportRobot> TransportRobots { get; set; }
+        //下面是我添加的为了生成
+        public DbSet<Station.ProtectedGas> ProtectedGass { get; set; }
+        //下面是我添加的为了生成
+        public DbSet<Station.CompressedGas> CompressedGass { get; set; }
 
         /* Add DbSet properties for your Aggregate Roots / Entities here.
          * Also map them inside SmartAbpDbContextModelCreatingExtensions.ConfigureSmartAbp
