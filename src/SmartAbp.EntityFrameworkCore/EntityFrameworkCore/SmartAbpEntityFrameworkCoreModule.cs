@@ -34,10 +34,12 @@ namespace SmartAbp.EntityFrameworkCore
 
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
+            // 注入自己的DbContext
             context.Services.AddAbpDbContext<SmartAbpDbContext>(options =>
             {
                 /* Remove "includeAllEntities: true" to create
-                 * default repositories only for aggregate roots */
+                 * default repositories only for aggregate roots
+                 * 建立缺省的仓储 */
                 options.AddDefaultRepositories(includeAllEntities: true);
             });
 

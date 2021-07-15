@@ -19,7 +19,7 @@ namespace SmartAbp.EntityFrameworkCore
      * Don't use this DbContext for database migrations since it does not contain tables of the
      * used modules (as explained above). See SmartAbpMigrationsDbContext for migrations.
      */
-    [ConnectionStringName("Default")]
+    [ConnectionStringName("Default")]  //数据源，在appsettings.json中
     public class SmartAbpDbContext : AbpDbContext<SmartAbpDbContext>
     {
         public DbSet<AppUser> Users { get; set; }
@@ -53,7 +53,7 @@ namespace SmartAbp.EntityFrameworkCore
             {
                 b.ToTable(AbpIdentityDbProperties.DbTablePrefix + "Users"); //Sharing the same table "AbpUsers" with the IdentityUser
                 
-                b.ConfigureByConvention();
+                b.ConfigureByConvention(); //变量名与表字段的映射
                 b.ConfigureAbpUser();
 
                 /* Configure mappings for your additional properties
