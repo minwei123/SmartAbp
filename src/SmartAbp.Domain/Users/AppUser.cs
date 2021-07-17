@@ -4,6 +4,10 @@ using Volo.Abp.Users;
 
 namespace SmartAbp.Users
 {
+    public class TechnicalSkill : ValueObject, ITechnicalSkill
+    {
+        public float SkillScore { get; set; }
+    }
     /* This entity shares the same table/collection ("AbpUsers" by default) with the
      * IdentityUser entity of the Identity module.
      *
@@ -54,6 +58,7 @@ namespace SmartAbp.Users
          * 4. Run the .DbMigrator project (or use the Update-Database command) to apply
          * schema change to the database.
          */
+         public TechnicalSkill tskill { get; set; }
 
         private AppUser()
         {
