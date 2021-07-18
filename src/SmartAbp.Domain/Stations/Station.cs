@@ -12,7 +12,7 @@ namespace SmartAbp.Stations
         WeldStation,
         MeasureStation
     }
-    public class Station : AuditedAggregateRoot<Guid>
+    public class Station : AuditedAggregateRoot<Guid>, ITechnicalSkill
     {
         //私有属性外部不好访问
         public class ProtectedGas : ValueObject
@@ -70,6 +70,9 @@ namespace SmartAbp.Stations
         {
             // 加工过程，它应该按照生产节拍反复调用
             // 这儿逻辑，比如减少气体量，耗材量，保养周期等等
+        }
+        public bool matchSkill(ITechnicalSkill techSkill) {
+            // 比较技能是否匹配
         }
     }
 }
