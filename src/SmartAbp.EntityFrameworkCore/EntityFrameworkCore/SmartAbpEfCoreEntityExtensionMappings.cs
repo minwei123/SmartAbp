@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SmartAbp.Users;
 using Volo.Abp.Identity;
 using Volo.Abp.ObjectExtending;
 using Volo.Abp.Threading;
@@ -39,6 +40,16 @@ namespace SmartAbp.EntityFrameworkCore
                  * See the documentation for more:
                  * https://docs.abp.io/en/abp/latest/Customizing-Application-Modules-Extending-Entities
                  */
+                ObjectExtensionManager.Instance
+                    .MapEfCoreProperty<IdentityUser, string>(
+                        nameof(AppUser.Avatar),
+                        b => { b.HasMaxLength(255); }
+                    )
+                    .MapEfCoreProperty<IdentityUser, string>(
+                        nameof(AppUser.Introduction),
+                        b => { b.HasMaxLength(255); }
+                    );
+
             });
         }
     }

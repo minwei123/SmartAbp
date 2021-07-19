@@ -61,7 +61,9 @@ namespace SmartAbp.EntityFrameworkCore
                 
                 b.ConfigureByConvention(); //变量名与表字段的映射
                 b.ConfigureAbpUser();
-
+                //下面是添加表要做的
+                b.Property(x => x.Avatar).IsRequired(false).HasMaxLength(255).HasColumnName(nameof(AppUser.Avatar));
+                b.Property(x => x.Introduction).IsRequired(false).HasMaxLength(255).HasColumnName(nameof(AppUser.Introduction));
                 /* Configure mappings for your additional properties
                  * Also see the SmartAbpEfCoreEntityExtensionMappings class
                  */

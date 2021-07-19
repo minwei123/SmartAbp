@@ -21,17 +21,17 @@ namespace SmartAbp.Stations
         }
     }
     // 操作员在工作站上登录时创建并使用该服务
-    public class MatchSkillService // 技能匹配服务
-    {
-        private ITechnicalSkill worker; // 操作员的技术对象
-        private ITechnicalSkill device; // 设备（工作站）的技能要求
-        public MatchSkillService(ITechnicalSkill wo, ITechnicalSkill de) {
-            worker = wo;
-            device = de;
-        }
-        public bool verifySkill() {
-            return device.matchSkill(worker);
-        }
+    //public class MatchSkillService // 技能匹配服务
+    //{
+    //    private ITechnicalSkill worker; // 操作员的技术对象
+    //    private ITechnicalSkill device; // 设备（工作站）的技能要求
+    //    public MatchSkillService(ITechnicalSkill wo, ITechnicalSkill de) {
+    //        worker = wo;
+    //        device = de;
+    //    }
+    //    public bool verifySkill() {
+    //        return device.matchSkill(worker);
+    //    }
 
-    }
+    //}
 }

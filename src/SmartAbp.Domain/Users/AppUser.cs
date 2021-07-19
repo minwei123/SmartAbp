@@ -4,10 +4,10 @@ using Volo.Abp.Users;
 
 namespace SmartAbp.Users
 {
-    public class TechnicalSkill : ValueObject, ITechnicalSkill
-    {
-        public float SkillScore { get; set; }
-    }
+    //public class TechnicalSkill : ValueObject, ITechnicalSkill
+    //{
+    //    public float SkillScore { get; set; }
+    //}
     /* This entity shares the same table/collection ("AbpUsers" by default) with the
      * IdentityUser entity of the Identity module.
      *
@@ -44,6 +44,8 @@ namespace SmartAbp.Users
 
         #endregion
 
+        public string MyProperty { get; set; }
+
         /* Add your own properties here. Example:
          *
          * public string MyProperty { get; set; }
@@ -58,7 +60,18 @@ namespace SmartAbp.Users
          * 4. Run the .DbMigrator project (or use the Update-Database command) to apply
          * schema change to the database.
          */
-         public TechnicalSkill tskill { get; set; }
+        //这个我先改为一般的属性试试再说
+        //public TechnicalSkill tskill { get; set; }
+
+        /// <summary>
+        /// 头像
+        /// </summary>
+        public string Avatar { get; set; }
+
+        /// <summary>
+        /// 个人介绍
+        /// </summary>
+        public string Introduction { get; set; }
 
         private AppUser()
         {

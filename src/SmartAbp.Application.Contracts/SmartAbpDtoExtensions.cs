@@ -23,7 +23,31 @@ namespace SmartAbp
                  * See the documentation for more:
                  * https://docs.abp.io/en/abp/latest/Object-Extensions
                  */
-            });
+                //这个是在dto中添加，否则在接口中就没有这个了
+                ObjectExtensionManager.Instance
+                    .AddOrUpdateProperty<string>(
+                        new[]
+                        {
+                            typeof(IdentityUserDto),
+                            typeof(IdentityUserCreateDto),
+                            typeof(IdentityUserUpdateDto),
+                            typeof(ProfileDto),
+                            typeof(UpdateProfileDto)
+                        },
+                        "Avatar"
+                    )
+                    .AddOrUpdateProperty<string>(
+                        new[]
+                        {
+                            typeof(IdentityUserDto),
+                            typeof(IdentityUserCreateDto),
+                            typeof(IdentityUserUpdateDto),
+                            typeof(ProfileDto),
+                            typeof(UpdateProfileDto)
+                        },
+                        "Introduction"
+                    );
+                });
         }
     }
 }

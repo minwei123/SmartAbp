@@ -10,8 +10,8 @@ namespace SmartAbp.Stations
             PagedAndSortedResultRequestDto, //Used for paging/sorting
             CreateUpdateStationDto> //Used to create/update a book
     {
-        public bool loginWorker(AppUser user) {
-            // TODO 这儿登录用户肯定不对，ABP已经实现了登录的
-        }
+        //public bool loginWorker(AppUser user) {
+        //    // TODO 这儿登录用户肯定不对，ABP已经实现了登录的
+        //}
     }
 }
